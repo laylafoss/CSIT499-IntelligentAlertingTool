@@ -166,6 +166,7 @@ def handleUnexpected(df, rowIndex):
 #MAIN EXECUTION   
  
 df = pd.read_csv('ORS_Data_Updated.csv')     #reading csv file
+df = df.applymap(str)                        #all entries in DF converted to str
 
 #Create columns: does not overwrite existing columns
 columnLen = len(df.columns)                  #finding length of columns, adds new columns at end of sheet
