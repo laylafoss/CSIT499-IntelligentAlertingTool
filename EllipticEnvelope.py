@@ -1,3 +1,7 @@
+# Elliptic Envelope machine learning algorithm
+# Madeline Barlow 
+# Contributed to by Wen Qing Wu
+
 import numpy as np
 import pandas as pd
 import csv
@@ -10,8 +14,7 @@ from sklearn.preprocessing import LabelEncoder
 from numpy import quantile, where, random
 import matplotlib.pyplot as plt
 
-df = pd.read_csv('matrix_result_copy.csv')
-#df = df.applymap(str)           
+df = pd.read_csv('matrix_result_copy.csv')      
 
 # Extract digits from each cell
 # Eventually to work this algorithm with our data from Layla's matrix, we will need to be able to
@@ -19,7 +22,7 @@ df = pd.read_csv('matrix_result_copy.csv')
 # The script in its current state only works with the test datasheet we manufactured 
 # for our purposes, not with the result Layla has come up with.
 
-dropping = df.drop(df.columns[[0, 1, 2, 3]], axis=1)
+dropping = df.drop(df.columns[[0, 1, 2, 3]], axis=1) 
 
 failed = dropping.iloc[0]
 unexpected = dropping.iloc[1]
@@ -37,6 +40,10 @@ unable_pred = envelope.predict(unable.values.reshape(-1,1))
 print('Failed error outliers: ', failed_pred)
 print('Unexpected error outliers: ', unexpected_pred)
 print('Unable error outliers: ', unable_pred)
+
+
+# Print scatter plot to represent data 
+# Author: Wen Qing Wu
 
 x = df.columns[4:]
 
