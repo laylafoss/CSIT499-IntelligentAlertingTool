@@ -1,5 +1,6 @@
 # Author: Wenqing Wu
 # Date: 4/27/23
+# Note: This will work with Layla's dataNormalization.py script for the orsfrs data
 
 import numpy as np
 import pandas as pd
@@ -7,8 +8,18 @@ import csv
 import matplotlib.pyplot as plt # for data visualization
 import plotly.express as px # for data visualization
 
+# stripping unnecessary text from cells
+text = open('matrix_result.csv', 'r')
+text = ''.join([i for i in text]).replace("{'Failed': ", '')
+text = ''.join([i for i in text]).replace("{'Unexpected': ", '')
+text = ''.join([i for i in text]).replace("{'Unable': ", '')
+text = ''.join([i for i in text]).replace('}', '')
+x1 = open('matrix_result_output.csv', 'w')
+x1.writelines(text)
+x1.close()
+
 # input file to be changed
-df = pd.read_csv('matrix_result_copy.csv')
+df = pd.read_csv('matrix_result_output.csv')
 
 x = df.columns[4:]  # defining the x-axis (the hours)
 
